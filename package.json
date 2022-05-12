@@ -12,6 +12,11 @@
     "deploy": "yarn export && node gh-pages.js"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "11",
+    "@emotion/styled": "11",
+    "framer-motion": "6",
     "gh-pages": "^4.0.0",
     "moment": "^2.29.3",
     "next": "12.1.6",
