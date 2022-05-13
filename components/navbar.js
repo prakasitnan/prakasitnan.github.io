@@ -1,22 +1,22 @@
 import Logo from './logo'
 import NextLink from 'next/link'
-import { Box, Container, Flex, Heading, Stack, Link, Menu, MenuItem, MenuList, MenuButton, IconButton  } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Stack, Link, Menu, MenuItem, MenuList, MenuButton, IconButton, useColorModeValue  } from '@chakra-ui/react'
 import ThemeToggleButton from './theme-toggle-button'
 import { HamburgerIcon } from '@chakra-ui/icons'
 
 const LinkItem = ({href, path, target, children, ...props}) => {
     const active = path === href
-
+    const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
     return (
         <NextLink href={href} passHref scroll={false}>
             <Link
                 p={2}
-                bg={active ? 'gray.200' : undefined}
-                color={active ? '#202023' : 'gray200'}
+                bg={active ? 'gressTeal' : undefined}
+                color={active ? '#202023' : inactiveColor}
                 target={target}
                 {...props}
             >
-            {children}
+                {children}
             </Link>
         </NextLink>
     )
@@ -29,8 +29,10 @@ export default function NavBar(props) {
             position="fixed"
             as="nav"
             w="100%"
+            bg={useColorModeValue('#ffffff40', '#20202380')}
             css={{ backdropFilter: 'blur(10px)' }}
             zIndex={1}
+            {...props}
         >
             <Container
                 display="flex"
@@ -45,6 +47,7 @@ export default function NavBar(props) {
                         <Logo />
                     </Heading>
                 </Flex>
+
                 <Stack
                     direction={{ base : 'column', md:'row'}}
                     display={{ base:'none', md:'flex' }}
@@ -64,7 +67,7 @@ export default function NavBar(props) {
                 <Box flex={1} align="right">
                     <ThemeToggleButton />
 
-                    <Box ml={2} display={{ base: 'inlne-block', md: 'none' }}>
+                    <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
                         <Menu isLazy id="navbar-menu">
                             <MenuButton 
                                 as={IconButton}
